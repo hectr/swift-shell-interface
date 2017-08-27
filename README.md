@@ -18,3 +18,7 @@ pod "ShellInterface"
 ## License
 
 ShellInterface is available under the MIT license. See the LICENSE file for more info.
+
+## Alternatives
+
+- <https://github.com/MoralAlberto/SwiftShell>
