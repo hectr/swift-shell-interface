@@ -24,6 +24,8 @@ public struct ReadPipe
 {
     public typealias Func = (Pipe, _ removeTrailingNewLine: Bool) -> String
     
+    public init() {}
+    
     // MARK: -
     
     public func execute(pipe: Pipe, removeTrailingNewLine: Bool = true) -> String
@@ -41,6 +43,6 @@ public struct ReadPipe
     private func stringByRemoveTrailingNewLine(_ string: String) -> String {
         guard string.characters.last == "\n" else { return string }
         let lastIndex = string.index(before: string.endIndex)
-        return string[string.startIndex ..< lastIndex]
+        return String(string[string.startIndex ..< lastIndex])
     }
 }

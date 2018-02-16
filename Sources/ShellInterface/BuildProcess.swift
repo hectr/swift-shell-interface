@@ -23,6 +23,8 @@ import Foundation
 public struct BuildProcess
 {
     public typealias Func = (_ launchPath: String, _ arguments: [String], _ context: TaskContext?, _ stdOut: Pipe?, _ stdErr: Pipe?) -> Process
+
+    public init() {}
     
     // MARK: -
     
