@@ -22,8 +22,14 @@ import Foundation
 
 public struct TaskContext
 {
-    public var environment: [String : String]? = nil
-    public var workingDirectory: String? = nil
+    public var environment: [String : String]?
+    public var workingDirectory: String?
+
+    public init(environment: [String : String]? = ProcessInfo.processInfo.environment,
+                workingDirectory: String? = FileManager.default.currentDirectoryPath) {
+        self.environment = environment
+        self.workingDirectory = workingDirectory
+    }
 }
 
 extension TaskContext: ExpressibleByStringLiteral
@@ -33,19 +39,19 @@ extension TaskContext: ExpressibleByStringLiteral
     
     public init(unicodeScalarLiteral value: UnicodeScalarLiteralType)
     {
-        self.environment = nil
+        self.environment = ProcessInfo.processInfo.environment
         self.workingDirectory = "\(value)"
     }
     
     public init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType)
     {
-        self.environment = nil
+        self.environment = ProcessInfo.processInfo.environment
         self.workingDirectory = value
     }
     
     public init(stringLiteral value: StringLiteralType)
     {
-        self.environment = nil
+        self.environment = ProcessInfo.processInfo.environment
         self.workingDirectory = value
     }
 }
@@ -62,7 +68,7 @@ extension TaskContext: ExpressibleByDictionaryLiteral
             environment[key] = value
         }
         self.environment = environment
-        self.workingDirectory = nil
+        self.workingDirectory = FileManager.default.currentDirectoryPath
 
     }
 }
