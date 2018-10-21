@@ -41,7 +41,7 @@ public struct ReadPipe
     }
     
     private func stringByRemoveTrailingNewLine(_ string: String) -> String {
-        guard string.characters.last == "\n" else { return string }
+        guard string.hasSuffix("\n") else { return string }
         let lastIndex = string.index(before: string.endIndex)
         return String(string[string.startIndex ..< lastIndex])
     }
