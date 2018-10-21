@@ -25,4 +25,28 @@ public enum TaskFailure: Error
     case stillRunning             (domain: String, code: Int)
     case nonzeroTerminationStatus (domain: String, code: Int, terminationStatus: Int, uncaughtSignal: Bool)
     case emptyOutput              (domain: String, code: Int)
+
+    public init?(result: TaskResult, domain: String = #function, code: Int = #line) {
+        guard let terminationStatus = result.terminationStatus else {
+            self = TaskFailure.stillRunning(
+                domain: domain,
+                code: code
+            ); return
+        }
+        guard terminationStatus == 0 else {
+            self = TaskFailure.nonzeroTerminationStatus(
+                domain: domain,
+                code: code,
+                terminationStatus: terminationStatus,
+                uncaughtSignal: result.terminatedDueUncaughtSignal
+            ); return
+        }
+        guard !result.standardOutput.isEmpty else {
+            self = TaskFailure.emptyOutput(
+                domain: domain,
+                code: code
+            ); return
+        }
+        return nil
+    }
 }
