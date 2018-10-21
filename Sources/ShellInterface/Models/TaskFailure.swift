@@ -22,7 +22,7 @@ import Foundation
 
 public enum TaskFailure: Error
 {
-    case stillRunning             (file: String, line: Int)
-    case nonzeroTerminationStatus (file: String, line: Int, terminationStatus: Int, uncaughtSignal: Bool)
-    case emptyOutput              (file: String, line: Int)
+    case stillRunning             (domain: String, code: Int)
+    case nonzeroTerminationStatus (domain: String, code: Int, terminationStatus: Int, uncaughtSignal: Bool)
+    case emptyOutput              (domain: String, code: Int)
 }
