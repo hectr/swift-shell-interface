@@ -9,4 +9,5 @@ XCTMain([
     testCase(TaskContextTests.allTests),
     testCase(TaskFailureTests.allTests),
     testCase(TaskResultTests.allTests),
+    testCase(ExpandVariablesInStringTests.allTests),
 ])
