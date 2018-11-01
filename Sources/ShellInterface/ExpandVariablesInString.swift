@@ -20,7 +20,8 @@ public struct ExpandVariablesInString
         return result
     }
 
-    private func canSubstituteSimplifiedVariableAtRange(_ range: Range<String.Index>, in string: String) -> Bool {
+    private func canSubstituteSimplifiedVariableAtRange(_ range: Range<String.Index>, in string: String) -> Bool
+    {
         guard !range.isEmpty else { return false }
         let nextIndex = range.upperBound
         guard string.endIndex > nextIndex else { return false }
@@ -30,8 +31,10 @@ public struct ExpandVariablesInString
     }
 }
 
-private extension CharacterSet {
-    static func +(lhs: CharacterSet, rhs: CharacterSet) -> CharacterSet {
+private extension CharacterSet
+{
+    static func +(lhs: CharacterSet, rhs: CharacterSet) -> CharacterSet
+    {
         var result = CharacterSet()
         result.formUnion(rhs)
         result.formUnion(lhs)

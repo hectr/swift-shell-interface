@@ -26,7 +26,8 @@ public enum TaskFailure: Error
     case nonzeroTerminationStatus (domain: String, code: Int, terminationStatus: Int, uncaughtSignal: Bool)
     case emptyOutput              (domain: String, code: Int)
 
-    public init?(result: TaskResult, domain: String = #function, code: Int = #line) {
+    public init?(result: TaskResult, domain: String = #function, code: Int = #line)
+    {
         guard let terminationStatus = result.terminationStatus else {
             self = TaskFailure.stillRunning(
                 domain: domain,

@@ -35,12 +35,14 @@ public struct ReadPipe
         return stringByRemoveTrailingNewLine(output)
     }
     
-    private func string(from pipe: Pipe) -> String {
+    private func string(from pipe: Pipe) -> String
+    {
         let outData = pipe.fileHandleForReading.readDataToEndOfFile()
         return String(data: outData, encoding: String.Encoding.utf8) ?? ""
     }
     
-    private func stringByRemoveTrailingNewLine(_ string: String) -> String {
+    private func stringByRemoveTrailingNewLine(_ string: String) -> String
+    {
         guard string.hasSuffix("\n") else { return string }
         let lastIndex = string.index(before: string.endIndex)
         return String(string[string.startIndex ..< lastIndex])
